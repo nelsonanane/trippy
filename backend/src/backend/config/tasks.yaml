@@ -1,0 +1,118 @@
+flight_search_task:
+  description: >
+    Using the provided user information, conduct a comprehensive search for flight options.
+    The destination is {destination}, with travel dates from {startDate} to {endDate}.
+    The total budget for the trip is ${budget}, and there are {travelers} travelers.
+
+    Use the AmadeusFlightSearchTool to search for flights. You'll need to determine
+    the appropriate city code for {destination}. Use the following parameters:
+    - origin: [Determine the closest major airport to the user's location]
+    - destination: [City code for {destination}]
+    - departure_date: {startDate}
+    - adults: {travelers}
+
+    Consider the following in your search:
+    1. Ensure the flight costs fit within the overall trip budget of ${budget}.
+    2. Look for options from multiple airlines, including both direct and connecting flights.
+    3. Consider factors such as layovers, airline reputation, and potential price fluctuations.
+    4. Take into account the user's preferred transportation methods: {transportation}.
+    5. Keep in mind the user's interests: {interests}, as this may affect preferred flight times.
+
+  expected_output: >
+    A list of 5-10 flight options, each containing:
+    - Airline(s) and flight numbers
+    - Departure and arrival times (including layover details if applicable)
+    - Total travel duration
+    - Price and how it fits within the overall budget
+    - Any notable features (e.g., extra legroom, meal included, baggage allowance)
+    - A brief explanation of why this option is recommended, considering the user's preferences and interests
+
+## Hotel Search Task
+hotel_search_task:
+  description: >
+    Perform an extensive search for accommodation options that match the
+    user's preferences, budget, and travel dates. Consider factors such as
+    location, amenities, guest ratings, and proximity to key attractions or
+    transportation hubs. Ensure that the search covers a range of options
+    from budget-friendly to luxury, depending on the user's specifications.
+    Take into account any special requirements (e.g., accessibility needs,
+    pet-friendly) and potential seasonal variations in pricing or availability.
+  expected_output: >
+    A list of 10 accommodation options, each containing:
+    - Hotel name and category (e.g., 3-star, boutique, apartment)
+    - Location and proximity to key points of interest
+    - Room types available and their prices
+    - Key amenities and unique selling points
+    - Guest rating summary and a brief analysis of recent reviews
+    - Cancellation policy and any special offers
+    - A brief explanation of why this option is recommended
+
+## Activity Planning Task
+activity_planning_task:
+  description: >
+    Create a diverse and engaging list of activities and experiences based
+    on the user's interests, travel dates, and destination. Consider factors
+    such as seasonal events, local cultural experiences, popular attractions,
+    and off-the-beaten-path options. Ensure that the activities cater to the
+    user's specified interests (e.g., adventure, culture, food) and physical
+    abilities. Take into account the local climate and potential weather
+    conditions during the travel period.
+  expected_output: >
+    A list of 10 recommended activities or experiences, each containing:
+    - Activity name and brief description
+    - Estimated duration and best time to visit
+    - Price range and booking requirements (if applicable)
+    - Location and transportation options
+    - Recommended age group or physical requirements (if relevant)
+    - Unique selling points or special features
+    - A brief explanation of why this activity is recommended based on the user's profile
+
+## Itinerary Creation Task
+itinerary_creation_task:
+  description: >
+    Create a comprehensive travel itinerary for a trip to {destination}
+        from {startDate} to {endDate} for {travelers} travelers.
+        The total budget for the trip is ${budget}.
+
+        1. Select the top 3 options for each of the following categories:
+           - Flights
+           - Hotels
+           - Activities
+
+        For each category, provide a brief justification for why these are the best 3 options,
+        considering factors such as cost, convenience, and alignment with user preferences.
+
+        2. From these top 3 options in each category, create an optimized itinerary that
+        fits within the specified budget while maximizing the overall travel experience.
+        Consider the following factors:
+        - Balance between cost and quality/experience for each component
+        - Logical flow of activities and their proximity to the selected accommodation
+        - Travel times between locations and potential for time zone adjustments
+        - A mix of scheduled activities and free time for relaxation or spontaneous exploration
+        - Even distribution of the budget across all aspects of the trip
+        - User preferences: {interests}, {accommodation}, {transportation}
+
+        Ensure that the total cost remains within the budget, including an allowance for meals
+        and incidental expenses. Make trade-offs if necessary to stay within budget constraints
+        while still providing a high-quality travel experience.
+
+        Provide the output in the specified format, including the top 3 options for each category,
+        the detailed day-by-day itinerary, and a final recommendation on which options were
+        ultimately chosen and why.
+
+  expected_output: >
+    A detailed day-by-day itinerary in markdown format, including:
+    - Selected flight details with justification (e.g., best balance of price and convenience)
+    - Chosen accommodation for each night with rationale (e.g., location, value for money)
+    - Daily schedule of selected activities with time slots and brief descriptions
+    - Estimated daily expenses broken down by category (transportation, accommodation,
+      activities, meals, miscellaneous)
+    - Running total of expenses and remaining budget
+    - Suggested meal times and potential dining options within the budget
+    - Transportation recommendations between locations
+    - Flexible time slots for relaxation or spontaneous exploration
+    - Tips for local customs, weather preparedness, or special considerations
+    - A brief summary explaining how the itinerary meets the user's preferences
+      and budget constraints, highlighting any trade-offs made
+    - Optional: Suggestions for budget reallocation if certain aspects of the trip
+      are under or over the initial estimates

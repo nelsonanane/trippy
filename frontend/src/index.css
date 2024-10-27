@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 25 95% 53%;
+    --color-secondary: 200 98% 39%;
+    --color-accent: 142 71% 45%;
+    --color-background: 0 0% 100%;
+    --color-foreground: 220 20% 20%;
+  }
+
+  .dark {
+    --color-primary: 25 95% 53%;
+    --color-secondary: 200 98% 39%;
+    --color-accent: 142 71% 45%;
+    --color-background: 220 20% 10%;
+    --color-foreground: 0 0% 95%;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-semibold transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary/90;
+  }
+
+  .input {
+    @apply px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary;
+  }
+}
